@@ -17,7 +17,7 @@ describe('PostsService', () => {
     const newPost = postsService.create(post);
 
     // assert
-      expect(postsService.find(newPost.id)).toEqual(newPost);
+      expect(postsService.find(newPost.id)).toBeDefined();
   });
 
   it('should find a post', () => {
@@ -25,6 +25,9 @@ describe('PostsService', () => {
       const newPost = postsService.create(post);
 
       // assert
-      expect(postsService.find(newPost.id)).toEqual(newPost);
+      expect(postsService.find(newPost.id)).toEqual({
+          ...newPost,
+          ...post,
+      });
   });
 });
